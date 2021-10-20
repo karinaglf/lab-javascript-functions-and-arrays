@@ -11,10 +11,13 @@ function maxOfTwoNumbers(a, b) {
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
 function findLongestWord(arr) {
-  let longestWord = null;
+  if(!arr.length) {
+    return null;
+  }
+  let longestWord = '';
 
   for (let i = 0; i < arr.length; i++) {
-    if (!longestWord || longestWord.length < arr[i].length) {
+    if (longestWord.length < arr[i].length) {
       longestWord = arr[i];
     }
   }
@@ -26,18 +29,41 @@ console.log(findLongestWord(words));
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(arr) {
-  let sum = 0;
+  let sumNumber = 0;
   for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+    sumNumber += arr[i];
 }
-  return sum;
+  return sumNumber;
 };
 
 console.log(sumNumbers(numbers));
 
 // Iteration #3.1 Bonus:
 
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
+function sum(arr) {
+  let sumMixedArr = 0;
+  for (let i = 0; i < arr.length; i++) {
+    switch (typeof arr[i]) {
+      case "string":
+        sumMixedArr += arr[i].length;
+        break;
+      case "number":
+        sumMixedArr += arr[i];
+        break;
+      case "boolean":
+        sumMixedArr += Number(arr[i]);
+        break;
+      default:   
+        throw new Error("Unsupported data type sir or ma'am");
+    }
+}
+  return sumMixedArr;
+  
+}
+
+console.log(sum(mixedArr));
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -45,8 +71,12 @@ console.log(sumNumbers(numbers));
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(arr) {
-  let sum = sumNumbers(arr); 
-  return sum / arr.length
+  if(!arr.length) {
+    return null;
+  } else {
+  let sumAvg = sumNumbers(arr); 
+  return sumAvg / arr.length
+}
 }
 
 console.log(averageNumbers(numbersAvg));
@@ -55,6 +85,9 @@ console.log(averageNumbers(numbersAvg));
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
 function averageWordLength(arr) { 
+  if(!arr.length) {
+    return null;
+  }
   let sumLenght = 0;
   for (let i = 0; i < arr.length; i++) {
     sumLenght += arr[i].length;
@@ -66,7 +99,15 @@ function averageWordLength(arr) {
 console.log(averageWordLength(wordsArr));
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if(!arr.length) {
+    return null;
+  } else {
+    let sumWordAvg = sum(arr); 
+    return Number((sumWordAvg / arr.length).toFixed(2)); //solve error for 5.11 not 5.1111....
+  }
+}
+console.log(avg(mixedArr));
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -84,6 +125,9 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(arr) {
+  if(!arr.length) {
+    return null;
+  }
   let unique = [];
   for (let i = 0; i < arr.length; i++) {
     if (unique.indexOf(arr[i] === -1)) {
@@ -100,7 +144,10 @@ console.log(uniquifyArray(wordsUnique));
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
 function doesWordExist(arr, word) {
-    return arr.includes(word);
+  if(!arr.length) {
+    return null;
+  } else {return arr.includes(word);
+  };
 };
 
 console.log(doesWordExist(wordsFind, 'trouble'))
@@ -158,10 +205,11 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arr) {
 
+};
 
-
+console.log(greatestProduct([16, 39, 5, 42, 96, 35, 31, 47, 55, 58, 88, 24, 0, 17, 54, 24, 36, 29, 85, 57]));
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
