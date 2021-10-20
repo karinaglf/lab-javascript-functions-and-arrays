@@ -121,7 +121,10 @@ const wordsUnique = [
   'poison',
   'communion',
   'simple',
-  'bring'
+  'bring',
+  "Ironhack",
+  "Ironhack",
+  "Ironhack",
 ];
 
 function uniquifyArray(arr) {
@@ -130,11 +133,12 @@ function uniquifyArray(arr) {
   }
   let unique = [];
   for (let i = 0; i < arr.length; i++) {
-    if (unique.indexOf(arr[i] === -1)) {
+    if (unique.indexOf(arr[i]) === -1) {
+      console.log(unique);
       unique.push(arr[i]);
     }
-    return unique;
   };
+  return unique;
 };
 
 console.log(uniquifyArray(wordsUnique));
